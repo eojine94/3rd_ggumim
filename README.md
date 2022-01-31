@@ -25,7 +25,7 @@
 1. 파일 클론 받기
 
 ```
-git clone
+git clone https://github.com/eojine94/wanted_pre_onboarding_ggumim.git
 ```
 
 2. node-modules 설치
