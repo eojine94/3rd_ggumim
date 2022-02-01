@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import formatingPrice from '../../utils';
 
-function TagWrapper({ data, isShownTag, setIsShownTag }) {
+function TagWrapper({ data, shownTag, setShownTag }) {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleOpenTag = () => {
-    isShownTag === false && setIsClicked(true);
-    setIsShownTag(true);
+    setIsClicked(true);
+    setShownTag(data);
   };
 
   const handleCloseTag = () => {
-    setIsShownTag(false);
+    setShownTag({});
     setIsClicked(false);
   };
+
+  // console.log('isClicked : ', isClicked);
 
   return (
     <TagWrapperContainer pointX={data.pointX} pointY={data.pointY}>
@@ -33,7 +35,7 @@ function TagWrapper({ data, isShownTag, setIsShownTag }) {
             <ToolTipDesc>
               <ToolTipName>{data.productName}</ToolTipName>
               <ToolTipPrice>
-                {data.outside === true ? (
+                {data.outside ? (
                   <PriceText>예상가</PriceText>
                 ) : (
                   <DiscountRate>{data.discountRate}%</DiscountRate>
@@ -56,7 +58,7 @@ function TagWrapper({ data, isShownTag, setIsShownTag }) {
 const TagWrapperContainer = styled.div`
   position: absolute;
   left: ${props => props.pointX}px;
-  top: ${props => props.pointY}px;
+  bottom: ${props => props.pointY}px;
   width: 40px;
   height: 40px;
   cursor: pointer;
