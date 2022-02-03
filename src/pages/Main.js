@@ -13,7 +13,7 @@ function Main() {
       .then(data => setImgProdData(data));
   }, []);
 
-  console.log('shownTag : ', shownTag);
+  // console.log('shownTag : ', shownTag);
 
   return (
     <MainContainer>

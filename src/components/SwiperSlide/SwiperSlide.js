@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 function SwiperSlide({ data, shownTag, setShownTag }) {
@@ -14,7 +14,9 @@ function SwiperSlide({ data, shownTag, setShownTag }) {
     setShownTag({});
   };
 
-  // console.log('isSelected : ', isSelected);
+  useEffect(() => {
+    setIsSelected(data === shownTag);
+  }, [data, shownTag]);
 
   return (
     <SwiperSlideContainer
@@ -28,7 +30,9 @@ function SwiperSlide({ data, shownTag, setShownTag }) {
         // isSelected={shownTag === data}
       />
       {data.discountRate > 0 && (
-        <DiscountBadge>{data.discountRate}%</DiscountBadge>
+        <DiscountBadge isSelected={isSelected}>
+          {data.discountRate}%
+        </DiscountBadge>
       )}
     </SwiperSlideContainer>
   );
@@ -57,7 +61,7 @@ const SlideImg = styled.img`
 
 const DiscountBadge = styled.div`
   position: absolute;
-  top: 1px;
+  top: ${props => (!props.isSelected ? '1px' : '2px')};
   right: 6px;
   background-image: url('/images/20211117191419RW6JS6bjRm.png');
   width: 24px;
