@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import TagWrapper from '../components/TagWrapper/TagWrapper';
 import SwiperSlide from '../components/SwiperSlide/SwiperSlide';
+import * as S from './Main.style';
 
 function Main() {
   const [imgProdData, setImgProdData] = useState({});
@@ -13,14 +13,12 @@ function Main() {
       .then(data => setImgProdData(data));
   }, []);
 
-  // console.log('shownTag : ', shownTag);
-
   return (
-    <MainContainer>
+    <S.MainContainer>
       {imgProdData.productList && (
-        <ContentWrapper>
-          <ImgWrapper>
-            <ThumbImg src={imgProdData.imageUrl} alt="thumbnailImg" />
+        <S.ContentWrapper>
+          <S.ImgWrapper>
+            <S.ThumbImg src={imgProdData.imageUrl} alt="thumbnailImg" />
             {imgProdData.productList.map(el => {
               return (
                 <TagWrapper
@@ -31,9 +29,9 @@ function Main() {
                 />
               );
             })}
-          </ImgWrapper>
-          <ProdSwiperContainer>
-            <SwiperWrapper>
+          </S.ImgWrapper>
+          <S.ProdSwiperContainer>
+            <S.SwiperWrapper>
               {imgProdData.productList.map(el => {
                 return (
                   <SwiperSlide
@@ -44,43 +42,12 @@ function Main() {
                   />
                 );
               })}
-            </SwiperWrapper>
-          </ProdSwiperContainer>
-        </ContentWrapper>
+            </S.SwiperWrapper>
+          </S.ProdSwiperContainer>
+        </S.ContentWrapper>
       )}
-    </MainContainer>
+    </S.MainContainer>
   );
 }
-
-const MainContainer = styled.div``;
-
-const ContentWrapper = styled.div`
-  width: 800px;
-  box-sizing: border-box;
-  padding: 40px 0;
-  margin: 0 auto;
-`;
-
-const ImgWrapper = styled.div`
-  position: relative;
-  cursor: pointer;
-`;
-
-const ThumbImg = styled.img`
-  width: 100%;
-  height: auto;
-`;
-
-const ProdSwiperContainer = styled.div`
-  display: flex;
-  align-items: center;
-  overflow-x: scroll;
-  padding-right: 10px;
-`;
-
-const SwiperWrapper = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`;
 
 export default Main;
