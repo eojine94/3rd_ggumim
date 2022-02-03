@@ -4,7 +4,7 @@
 
 ## 1. 배포 주소
 
-http://personal-assignment-ggumim.s3-website.ap-northeast-2.amazonaws.com
+[배포 링크](http://personal-assignment-ggumim.s3-website.ap-northeast-2.amazonaws.com)
 
 ## 2. 프로젝트 소개
 
