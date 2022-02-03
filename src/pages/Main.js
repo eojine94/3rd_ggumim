@@ -16,7 +16,6 @@ function Main() {
   }, []);
 
   const handleThumbnailClick = e => {
-    console.log(e);
     setShownTag({});
   };
 
