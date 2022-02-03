@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import formatingPrice from '../../utils';
 
@@ -14,6 +14,10 @@ function TagWrapper({ data, shownTag, setShownTag }) {
     setShownTag({});
     setIsClicked(false);
   };
+
+  useEffect(() => {
+    setIsClicked(data === shownTag);
+  }, [data, shownTag]);
 
   // console.log('isClicked : ', isClicked);
 
@@ -57,8 +61,8 @@ function TagWrapper({ data, shownTag, setShownTag }) {
 
 const TagWrapperContainer = styled.div`
   position: absolute;
-  left: ${props => props.pointX}px;
-  bottom: ${props => props.pointY}px;
+  top: calc(${props => props.pointX}px * 1.6);
+  left: calc(${props => props.pointY}px * 1.6);
   width: 40px;
   height: 40px;
   cursor: pointer;
