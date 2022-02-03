@@ -18,13 +18,6 @@ export const ThumbImg = styled.img`
   height: auto;
 `;
 
-export const ProdSwiperContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
-  overflow-x: scroll;
-`;
-
 export const SwiperWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
